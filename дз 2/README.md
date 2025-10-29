@@ -8,8 +8,8 @@
 На изображении ищутся контуры, среди которых отсеиваются контуры со слишком маленькой площадью, чтобы захватить только нужный объект.
 Далее контур аппроксимируется под эллипс, у которого ищется область захвата.
 Областью захвата в данном случае будет минимальная ось эллипса.
-Зная, что fitEllipse возвращает ((center_x, center_y), (min_axis, max_axis), angle).
-Находим первую точку минимальной оси: X: center_x + cos(angle)*min_axis/2,  Y: center_y + sin(angle)*min_axis/2.
+Зная, что fitEllipse возвращает ((center_x, center_y), (min_axis, max_axis), angle),
+находим первую точку минимальной оси: X: center_x + cos(angle)*min_axis/2,  Y: center_y + sin(angle)*min_axis/2.
 И вторую точку: X: center_x - cos(angle)*min_axis/2,  Y: center_y - sin(angle)*min_axis/2.
 По этим точкам строится отрезок.
 
