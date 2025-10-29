@@ -8,15 +8,15 @@
 На изображении ищутся контуры, среди которых отсеиваются контуры со слишком маленькой площадью, чтобы захватить только нужный объект.
 Далее контур аппроксимируется под эллипс, у которого ищется область захвата.
 Областью захвата в данном случае будет минимальная ось эллипса.
-Зная, что fitEllipse возвращает ((center_x, center_y), (min_axis, max_axis), angle),
-находим первую точку минимальной оси: X: center_x + cos(angle)*min_axis/2,  Y: center_y + sin(angle)*min_axis/2.
-И вторую точку: X: center_x - cos(angle)*min_axis/2,  Y: center_y - sin(angle)*min_axis/2.
+Зная, что fitEllipse возвращает **((center_x, center_y), (min_axis, max_axis), angle)**,
+находим первую точку минимальной оси: __X: center_x + cos(angle)*min_axis/2,  Y: center_y + sin(angle)*min_axis/2__.
+И вторую точку: __X: center_x - cos(angle)*min_axis/2,  Y: center_y - sin(angle)*min_axis/2__.
 По этим точкам строится отрезок.
 
 С помощью арктангенса от отношения между катетами ищется угол, образующийся пересечением областью захвата c горизонталью изображения: 
-angle_hor = arctan(abs(first_point_y-second_point_y)/abs(first_point_x-second_point_x)).
+**angle_hor = arctan(abs(first_point_y-second_point_y)/abs(first_point_x-second_point_x))**.
 И находится угол образованный пересечением с вертикалью:
-angle_vert = 90 - angle_hor.
+**angle_vert = 90 - angle_hor**.
 
 На экран выводится сам эллипс, его центр и область захвата.
 А также координаты центра эллипса, angle_hor и angle_vert.
